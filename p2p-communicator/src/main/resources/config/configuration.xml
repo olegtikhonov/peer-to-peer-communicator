@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xsi:schemaLocation="com.att.tlv.infra.core.configuration-V2.0.0" xmlns="com.att.tlv.infra.core.configuration-V2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!-- A peer name parameter -->
+	<configuration-entry>
+		<string>
+			<config-entry-metadata>
+				<parameter-name>peer-name</parameter-name>
+				<display-name>Peer Name</display-name>
+				<description>a name to be given for the peer</description>
+				<displayable>true</displayable>
+				<modification-scope>deploy-time</modification-scope>
+				<tool-tip/>
+			</config-entry-metadata>
+			<string-parameter>
+				<value>my-receiver-peer</value>
+				<allow-empty>false</allow-empty>
+			</string-parameter>
+		</string>
+	</configuration-entry>
+	<!-- A path of peer cache parameter -->
+	<configuration-entry>
+		<string>
+			<config-entry-metadata>
+				<parameter-name>cache-path</parameter-name>
+				<display-name>Peer cache location</display-name>
+				<description>Location where a peer can save its data</description>
+				<displayable>true</displayable>
+				<modification-scope>deploy-time</modification-scope>
+				<tool-tip/>
+			</config-entry-metadata>
+			<string-parameter>
+				<value>/home/peercache</value>
+				<allow-empty>false</allow-empty>
+			</string-parameter>
+		</string>
+	</configuration-entry>
+	<!-- Thread pool type to be used -->
+	<configuration-entry>
+		<string>
+			<config-entry-metadata>
+				<parameter-name>thread-pool-type</parameter-name>
+				<display-name>Thread pool type</display-name>
+				<description>Thread pool type can be either WAS or JAVA</description>
+				<displayable>true</displayable>
+				<modification-scope>deploy-time</modification-scope>
+				<tool-tip/>
+			</config-entry-metadata>
+			<string-parameter>
+				<value>WAS</value>
+				<allow-empty>false</allow-empty>
+			</string-parameter>
+		</string>
+	</configuration-entry>
+	<!-- If WAS thread pool type was chosen, then there is need to provide jndi 
+		lookup name -->
+	<configuration-entry>
+		<string>
+			<config-entry-metadata>
+				<parameter-name>was-thread-pool-name</parameter-name>
+				<display-name>WAS JNDI thread pool name</display-name>
+				<description>This name defined during creating WAS thread pool</description>
+				<displayable>true</displayable>
+				<modification-scope>deploy-time</modification-scope>
+				<tool-tip/>
+			</config-entry-metadata>
+			<string-parameter>
+				<value>wm/default</value>
+				<allow-empty>false</allow-empty>
+			</string-parameter>
+		</string>
+	</configuration-entry>
+	<!-- If there is required to activate JXTA logger in debug mode -->
+	<configuration-entry>
+		<boolean>
+			<config-entry-metadata>
+				<parameter-name>jxta-logger-debug</parameter-name>
+				<display-name>JXTA logger</display-name>
+				<description>Indicates if to activate JXTA logger. True means to activate JXTA logger</description>
+				<displayable>false</displayable>
+				<modification-scope>deploy-time</modification-scope>
+				<tool-tip/>
+			</config-entry-metadata>
+			<boolean-parameter>
+				<value>false</value>
+			</boolean-parameter>
+		</boolean>
+	</configuration-entry>
+	<!-- Message buffer size -->
+	<configuration-entry>
+		<integer>
+			<config-entry-metadata>
+				<parameter-name>backlog</parameter-name>
+				<display-name>Message buffer size</display-name>
+				<description>Allocates message backlog</description>
+				<displayable>true</displayable>
+				<modification-scope>run-time</modification-scope>
+				<tool-tip/>
+			</config-entry-metadata>
+			<integer-parameter>
+				<min-value>1</min-value>
+				<max-value>65000</max-value>
+				<value>50</value>
+			</integer-parameter>
+		</integer>
+	</configuration-entry>
+	<!-- A number indicating how many times to be tried to send message -->
+	<configuration-entry>
+		<integer>
+			<config-entry-metadata>
+				<parameter-name>retry</parameter-name>
+				<display-name/>
+				<description>Indicates how many time a peer will be try to send message if in first try is not succeeded</description>
+				<displayable>true</displayable>
+				<modification-scope>run-time</modification-scope>
+				<tool-tip/>
+			</config-entry-metadata>
+			<integer-parameter>
+				<min-value>1</min-value>
+				<max-value>65000</max-value>
+				<value>50</value>
+			</integer-parameter>
+		</integer>
+	</configuration-entry>
+	<!-- If there is required to activate JXTA logger in debug mode -->
+	<configuration-entry>
+		<boolean>
+			<config-entry-metadata>
+				<parameter-name>compress-binary-data</parameter-name>
+				<display-name>compress data</display-name>
+				<description>Boolean flag indicates either compress or not compress binary data. True means compress data</description>
+				<displayable>true</displayable>
+				<modification-scope>deploy-time</modification-scope>
+				<tool-tip/>
+			</config-entry-metadata>
+			<boolean-parameter>
+				<value>true</value>
+			</boolean-parameter>
+		</boolean>
+	</configuration-entry>
+</configuration>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" 
+                     xmlns:att="http://tlv.att.com/infra/xmlns/infra/v1.1.0" 
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                     xsi:schemaLocation="http://tlv.att.com/infra/xmlns/infra/v1.1.0
+                     http://tlv.att.com/infra/xmlns/infra/v1.1.0/att.xsd">
+	
+	<bean id="configuration-api" class="com.att.tlv.infra.services.p2pcommunicator.configuration.ConfigurationApiImpl" init-method="initialize" >
+		<property name="applicationContext" ref="applicationContext"/>
+		<property name="bundleContext" ref="blueprintBundleContext"/>
+	</bean>
+	
+	<att:service att:invalidityAction="NOTIFICATION" att:validationInterval="20000" id="configuration-api-service" ref="configuration-api"
+		interface="com.att.tlv.infra.services.p2pcommunicator.configuration.ConfigurationApi">
+	</att:service>
+	
+</blueprint>

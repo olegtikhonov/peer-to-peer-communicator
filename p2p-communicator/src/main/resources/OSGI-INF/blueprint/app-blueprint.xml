@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+	<!--
+	Defines a bean entity, i.e. implementation of the service interface 
+	<property name="configurationApi" ref="configuration-api"/>
+	 -->
+	<bean id="peer-factory" class="com.att.tlv.infra.services.ppc.service.impl.PPCServicePeerFactoryImpl" init-method="init">
+		<property name="configurationApi" ref="configuration-api"/>
+		<property name="loggerApi" ref="logger-api"/>
+	</bean>
+	
+	<!--
+	Just registers a service  
+	-->
+	<service id="peer-factory-service" ref="peer-factory"
+		interface="com.att.tlv.infra.services.ppc.service.PPCServicePeerFactory">
+	</service>
+	
+<!-- 	<bean id="bidi-peer" class="com.att.tlv.ppc.peer.BiDiPeer" init-method="setConfigurationApi">
+		<property name="bundleContext" ref="blueprintBundleContext" />
+		<property name="configurationApi" ref="configuration-api"/>
+	</bean> -->
+	
+	
+	
+	<!-- 
+	<service id="peer-factory" ref="peer-factory-service"
+		interface="com.att.tlv.ppc.service.PPCServicePeerFactory">
+	</service>
+	-->
+	<!-- 
+	<service id="peer-factory-service" interface="com.att.tlv.ppc.service.PPCServicePeerFactory">
+		<bean class="com.att.tlv.ppc.service.impl.PeerFactoryService" />
+	</service>
+	-->
+</blueprint>

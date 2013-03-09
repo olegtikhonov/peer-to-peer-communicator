@@ -1,0 +1,9 @@
+Important:
+
+Add pipe.close() method to all peers in destroy()
+Solution of does not match ...
+http://www.java.net/forum/topic/jxta/jxta-community-forum/how-initialize-pse-jxse-27
+
+
+Fix:
+DiscoveryPeerTest

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+	
+	
+	<bean id="logger-api" class="com.att.tlv.infra.services.p2pcommunicator.logger.LoggerApiImpl" init-method="initialize" >
+		<property name="applicationContext" ref="applicationContext"/>
+		<property name="bundleContext" ref="blueprintBundleContext"/>
+	</bean>	
+	
+	
+	<bean id="static-logger" class="com.att.tlv.infra.services.p2pcommunicator.logger.StaticLogger" init-method="initialize" destroy-method="destroy" activation="eager">
+		<property name="loggerApi" ref="logger-api"/>
+	</bean>	 
+		
+	<service id="logger-api-service" ref="logger-api"
+		interface="com.att.tlv.infra.services.p2pcommunicator.logger.LoggerApi">
+	</service>
+</blueprint>
