@@ -21,7 +21,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-    <groupId>com.att.tlv.infra.services</groupId>
+    <groupId>com.ocrix.ppc</groupId>
     <artifactId>p2p-communicator</artifactId>
     <version>1.0.0</version>
     <packaging>bundle</packaging>
