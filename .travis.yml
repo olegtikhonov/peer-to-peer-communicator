@@ -4,5 +4,5 @@ jdk:
   - oraclejdk7
   - openjdk7
   
-script: build_all.sh
+script: ./build_all.sh
 
