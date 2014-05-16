@@ -1,102 +1,123 @@
 <project
         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
         xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-    <!-- <parent> <groupId>com.att.tlv.infra</groupId> <artifactId>services</artifactId>
+	<!-- <parent> <groupId>com.att.tlv.infra</groupId> <artifactId>services</artifactId>
         <version>4.0.11</version> </parent> -->
-    <!-- Sonatype repository containing JXSE.jar for 2.7 -->
-    <repositories>
-        <repository>
-            <id>repository.oss.sonatype.org</id>
-            <url>https://oss.sonatype.org/content/repositories/comkenaijxse-014/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+	<!-- Sonatype repository containing JXSE.jar for 2.7 
+	
+	-->
+	<repositories>
+		<repository>
+			<!-- Repository needed to include the jboss netty library -->
+			<id>repository.jboss.org</id>
+			<!--<url>http://repository.jboss.org/nexus/content/groups/public/</url>-->
+			<url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<!-- Repository needed to include the jboss netty library -->
+			<id>mvn2</id>
+			<url>http://repo2.maven.org/maven2/</url>
+		</repository>
+		<repository>
+			<id>repository.httptunnel</id>
+			<!--<url>http://bitbucket.org/iainmcgin/netty-httptunnel/raw/tip/repo</url>-->
+			<url>https://bitbucket.org/iainmcgin/netty-httptunnel/raw/tip/repo</url>
+		</repository>
+		<repository>
+			<id>repository.oss.sonatype.org</id>
+			<url>https://oss.sonatype.org/content/repositories/comkenaijxse-014/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-    <groupId>com.ocrix.ppc</groupId>
-    <artifactId>p2p-communicator</artifactId>
-    <version>1.0.0</version>
-    <packaging>bundle</packaging>
-    <name>p2p-communicator</name>
-    <description>OSGI p2p-communicator bundle</description>
-    <dependencies>
-        <dependency>
-            <groupId>com.kenai.jxse</groupId>
-            <artifactId>jxse</artifactId>
-            <version>2.7</version>
-           <!--  <version>2.6</version> -->
-        </dependency>
-        <dependency>
-            <groupId>commons-validator</groupId>
-            <artifactId>commons-validator</artifactId>
-            <version>1.4.0</version>
-        </dependency>
+	<groupId>com.ocrix.ppc</groupId>
+	<artifactId>p2p-communicator</artifactId>
+	<version>1.0.0</version>
+	<packaging>bundle</packaging>
+	<name>p2p-communicator</name>
+	<description>OSGI p2p-communicator bundle</description>
+	<dependencies>
+		<dependency>
+			<groupId>com.kenai.jxse</groupId>
+			<artifactId>jxse</artifactId>
+			<version>2.7</version>
+			<!--  <version>2.6</version> -->
+		</dependency>
+		<dependency>
+			<groupId>commons-validator</groupId>
+			<artifactId>commons-validator</artifactId>
+			<version>1.4.0</version>
+		</dependency>
 
-        <dependency>
-            <groupId>org.jboss.netty</groupId>
-            <artifactId>netty</artifactId>
-            <version>3.2.9.Final</version>
-            <scope>compile</scope>
-            <optional>true</optional>
-        </dependency>
+		<dependency>
+			<groupId>org.jboss.netty</groupId>
+			<artifactId>netty</artifactId>
+			<version>3.2.9.Final</version>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
 
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
-        </dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
 
-        <!-- <dependency> <groupId>org.apache.logging.log4j</groupId> <artifactId>log4j-core</artifactId>
+		<!-- <dependency> <groupId>org.apache.logging.log4j</groupId> <artifactId>log4j-core</artifactId>
             <version>2.0-beta4</version> </dependency> -->
 
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.0.60</version>
-            <optional>true</optional>
-        </dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.0.60</version>
+			<optional>true</optional>
+		</dependency>
 
-        <dependency>
-            <groupId>org.mortbay.jetty</groupId>
-            <artifactId>jetty</artifactId>
-            <version>7.0.0.pre5</version>
-            <optional>true</optional>
-        </dependency>
+		<dependency>
+			<groupId>org.mortbay.jetty</groupId>
+			<artifactId>jetty</artifactId>
+			<version>7.0.0.pre5</version>
+			<optional>true</optional>
+		</dependency>
 
-        <!-- This dependency should be uncommented in case of using cryptography
+		<!-- This dependency should be uncommented in case of using cryptography
             feature of P2P communicator -->
-        <dependency>
-            <groupId>bouncycastle</groupId>
-            <artifactId>bcprov-jdk15</artifactId>
-            <version>140</version>
-            <scope>compile</scope>
-        </dependency>
+		<dependency>
+			<groupId>bouncycastle</groupId>
+			<artifactId>bcprov-jdk15</artifactId>
+			<version>140</version>
+			<scope>compile</scope>
+		</dependency>
 
-        <!--<dependency> <groupId>com.ibm.ws</groupId> <artifactId>wsexception</artifactId>
+		<!--<dependency> <groupId>com.ibm.ws</groupId> <artifactId>wsexception</artifactId>
             <scope>provided</scope> </dependency> <dependency> <groupId>com.ibm.websphere</groupId>
             <artifactId>naming</artifactId> <scope>provided</scope> </dependency> <dependency>
             <groupId>com.ibm.ws</groupId> <artifactId>asynchbeans</artifactId> <scope>provided</scope>
             </dependency> -->
 
 
-        <!-- dependencies -->
-        <!--<dependency> <groupId>com.att.tlv.infra.core</groupId> <artifactId>application-core</artifactId>
+		<!-- dependencies -->
+		<!--<dependency> <groupId>com.att.tlv.infra.core</groupId> <artifactId>application-core</artifactId>
             <scope>provided</scope> </dependency> -->
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-            <version>4.3.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <!--<dependency> <groupId>com.att.tlv.infra.core.cm</groupId> <artifactId>configuration-management-api</artifactId>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<version>4.3.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<!--<dependency> <groupId>com.att.tlv.infra.core.cm</groupId> <artifactId>configuration-management-api</artifactId>
             <scope>provided</scope> </dependency> <dependency> <groupId>com.att.tlv.infra.core</groupId>
             <artifactId>logger</artifactId> <scope>provided</scope> </dependency> <dependency>
             <groupId>com.att.tlv.infra.core</groupId> <artifactId>snmp-adapter</artifactId>
@@ -105,97 +126,97 @@
             <dependency> <groupId>com.att.tlv.infra.core.kpi</groupId> <artifactId>kpi-manager-api</artifactId>
             <scope>provided</scope> </dependency> -->
 
-        <!-- <dependency> <groupId>com.att.tlv.infra.core.lifecycle</groupId> <artifactId>service-lifecycle-management-api</artifactId>
+		<!-- <dependency> <groupId>com.att.tlv.infra.core.lifecycle</groupId> <artifactId>service-lifecycle-management-api</artifactId>
             <scope>provided</scope> </dependency> -->
 
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.10</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.9.5</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.9.5</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
-    <build>
+	<build>
 
-        <plugins>
+		<plugins>
 
-            <!-- Set Compiler to be Java 6 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                	<fork>true</fork>
-                </configuration>
-            </plugin>
+			<!-- Set Compiler to be Java 6 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<fork>true</fork>
+				</configuration>
+			</plugin>
 
-            <!-- Generated code folder -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-            </plugin>
-            <!-- Infra plugin - Configuration Code Generation Mojo -->
-            <!-- <plugin> <groupId>com.att.tlv.infra.tools.sce.code-gen.configuration</groupId>
+			<!-- Generated code folder -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+			</plugin>
+			<!-- Infra plugin - Configuration Code Generation Mojo -->
+			<!-- <plugin> <groupId>com.att.tlv.infra.tools.sce.code-gen.configuration</groupId>
                 <artifactId>configuration-code-generation-plugin</artifactId> </plugin> -->
-            <!-- Infra plugin - Alarm Code Generation Mojo -->
-            <!--<plugin> <groupId>com.att.tlv.infra.tools.sce.code-gen.alarms</groupId>
+			<!-- Infra plugin - Alarm Code Generation Mojo -->
+			<!--<plugin> <groupId>com.att.tlv.infra.tools.sce.code-gen.alarms</groupId>
                 <artifactId>alarm-code-generation-plugin</artifactId> </plugin> -->
-            <!-- Infra plugin - KPI Code Generation Mojo -->
-            <!--<plugin> <groupId>com.att.tlv.infra.tools.sce.code-gen.kpi</groupId>
+			<!-- Infra plugin - KPI Code Generation Mojo -->
+			<!--<plugin> <groupId>com.att.tlv.infra.tools.sce.code-gen.kpi</groupId>
                 <artifactId>kpi-code-generation-plugin</artifactId> </plugin> -->
 
-            <!-- Bundle Plugin Setup -->
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <extensions>true</extensions>
-                <!--<version>${maven.bundle.plugin.version}</version> -->
-                <configuration>
-                    <!-- Put the MANIFEST.MF file in the root of the project for eclipse
+			<!-- Bundle Plugin Setup -->
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<!--<version>${maven.bundle.plugin.version}</version> -->
+				<configuration>
+					<!-- Put the MANIFEST.MF file in the root of the project for eclipse
                         PDE integration (plugin will be able to be run in eclipse environment) -->
-                    <manifestLocation>META-INF</manifestLocation>
-                    <instructions>
-                        <Bundle-Vendor>AT&amp;T</Bundle-Vendor>
-                        <!-- Handle dependencies on external libraries as defined in the dependencies
+					<manifestLocation>META-INF</manifestLocation>
+					<instructions>
+						<Bundle-Vendor>AT&amp;T</Bundle-Vendor>
+						<!-- Handle dependencies on external libraries as defined in the dependencies
                             block above if needed. This will pack the libraries (in compile scope) inside
                             the bundle and set an appropriate class-path in the MANIFEST.MF -->
-                        <Embed-Dependency>*;scope=compile;inline=true</Embed-Dependency>
-                        <Embed-Directory>target/dependency</Embed-Directory>
-                        <!-- Where the dependencies should be copied inside the jar -->
+						<Embed-Dependency>*;scope=compile;inline=true</Embed-Dependency>
+						<Embed-Directory>target/dependency</Embed-Directory>
+						<!-- Where the dependencies should be copied inside the jar -->
 
-                        <!-- <Bundle-ClassPath> ., META-INF/services/net.jxta.content.ContentProviderSPI,
+						<!-- <Bundle-ClassPath> ., META-INF/services/net.jxta.content.ContentProviderSPI,
                             META-INF/services/net.jxta.document.Advertisement, META-INF/services/net.jxta.document.StructuredDocument,
                             META-INF/services/net.jxta.endpoint.WireFormatMessage, META-INF/services/net.jxta.id.ID,
                             META-INF/services/net.jxta.platform.Module </Bundle-ClassPath> -->
 
-                        <!-- Export APIs -->
-                        <Export-Package>
+						<!-- Export APIs -->
+						<Export-Package>
                             com.att.tlv.infra.services.ppc.service;version=${project.version},
                             com.att.tlv.infra.services.ppc.peer;version=${project.version},
                             com.att.tlv.infra.services.ppc.exception;version=${project.version},
                             com.att.tlv.infra.services.ppc.message;version=${project.version},
                             com.att.tlv.infra.services.ppc.listener;version=${project.version}
-                        </Export-Package>
+						</Export-Package>
 
-                        <!-- If some class is not found, does some lookup in other packages -->
-                        <DynamicImport-Package>*</DynamicImport-Package>
+						<!-- If some class is not found, does some lookup in other packages -->
+						<DynamicImport-Package>*</DynamicImport-Package>
 
-                        <Bundle-Activator>com.att.tlv.infra.services.p2p_communicator.osgi.activator.Activator
-                        </Bundle-Activator>
+						<Bundle-Activator>com.att.tlv.infra.services.p2p_communicator.osgi.activator.Activator
+						</Bundle-Activator>
 
-                        <!-- Usually the bundle plugin creates the Import-Package header automatically
+						<!-- Usually the bundle plugin creates the Import-Package header automatically
                             (according to references to external libraries in the code). But here, we
                             tell the plugin that some of our dependencies are copied into the bundle
                             physically and not imported via the OSGI framework. This is done using the
                             resolution:=optional directive. -->
 
-                        <!-- <Import-Package> org.bouncycastle.*;resolution:=optional, org.apache.commons.*;resolution:=optional,
+						<!-- <Import-Package> org.bouncycastle.*;resolution:=optional, org.apache.commons.*;resolution:=optional,
                             org.apache.felix.framework;resolution:=optional, org.w3c.dom.*;resolution:=optional,
                             org.xml.sax;resolution:=optional, org.slf4j;resolution:=optional, org.mortbay.*;resolution:=optional,
                             org.h2.jdbcx;resolution:=optional, org.apache.log4j;resolution:=optional,
@@ -203,65 +224,65 @@
                             com.google.protobuf;resolution:=optional, org.jboss.logging;resolution:=optional,*
                             </Import-Package> -->
 
-                        <Import-Package>
-                            <!-- org.apache.commons.*;resolution:=optional, org.apache.oro.text.perl;resolution:=optional,* -->
+						<Import-Package>
+							<!-- org.apache.commons.*;resolution:=optional, org.apache.oro.text.perl;resolution:=optional,* -->
                             *;resolution:=optional
-                        </Import-Package>
+						</Import-Package>
 
-                    </instructions>
-                </configuration>
+					</instructions>
+				</configuration>
 
-            </plugin>
+			</plugin>
 
-            <!-- Copy dependencies of bundle for the eclipse PDE org.apache.commons.collections;resolution:=optional,
+			<!-- Copy dependencies of bundle for the eclipse PDE org.apache.commons.collections;resolution:=optional,
                 org.apache.commons.beanutils;resolution:=optional, org.apache.commons.digester;resolution:=optional, -->
-            <plugin>
-                <artifactId>maven-dependency-plugin</artifactId>
-            </plugin>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+			</plugin>
 
-            <!-- Copy resources such as OSGI-INF (from src/main/resources to root
+			<!-- Copy resources such as OSGI-INF (from src/main/resources to root
                 of project. Again this is only for the eclipse PDE environment -->
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-            </plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+			</plugin>
 
-            <!-- Clean also META-INF and OSGI-INF that were copied only for the eclipse
+			<!-- Clean also META-INF and OSGI-INF that were copied only for the eclipse
                 PDE -->
-            <plugin>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>2.5</version>
-                <configuration>
-                    <filesets>
-                        <fileset>
-                            <directory>META-INF</directory>
-                        </fileset>
-                        <fileset>
-                            <directory>OSGI-INF</directory>
-                        </fileset>
-                        <fileset>
-                            <directory>config</directory>
-                        </fileset>
-                        <fileset>
-                            <directory>src/main/generated</directory>
-                        </fileset>
-                        <fileset>
-                            <directory>alarms</directory>
-                        </fileset>
-                        <fileset>
-                            <directory>kpi</directory>
-                        </fileset>
-                    </filesets>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.2.1</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>META-INF</directory>
+						</fileset>
+						<fileset>
+							<directory>OSGI-INF</directory>
+						</fileset>
+						<fileset>
+							<directory>config</directory>
+						</fileset>
+						<fileset>
+							<directory>src/main/generated</directory>
+						</fileset>
+						<fileset>
+							<directory>alarms</directory>
+						</fileset>
+						<fileset>
+							<directory>kpi</directory>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 </project>
