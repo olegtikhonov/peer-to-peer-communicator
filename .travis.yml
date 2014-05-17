@@ -4,5 +4,7 @@ jdk:
   - oraclejdk7
   - openjdk7
   
-script: ./build_all.sh
-
+script: 
+  - pushd p2p-communicator
+  - mvn -U clean install
+  - popd
