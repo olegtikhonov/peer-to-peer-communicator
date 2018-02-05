@@ -7,3 +7,19 @@ http://www.java.net/forum/topic/jxta/jxta-community-forum/how-initialize-pse-jxs
 
 Fix:
 DiscoveryPeerTest
+
+Declimer:
+There are a lot of things are changed since I've done this.
+So, currently, before bulding this package, you have to do pre-build steps:
+1. download (netty-httptunnel) from https://bitbucket.org/iainmcgin/netty-httptunnel/downloads/
+2. change version from 1.0 to 0.92 in its pom.xml file. Why this? Because of lack of support. jxse 2.7 depends on http-tunnel 0.92, and not on 1.0
+   mvn clean install
+3. on p2p-communicator 
+   mvn clean install
+
+Do not know, what is an official status of jxse.
+https://wiki.apache.org/incubator/ChaupalProposal
+
+
+
+
