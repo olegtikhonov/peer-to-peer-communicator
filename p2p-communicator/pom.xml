@@ -106,9 +106,9 @@
 		<!-- This dependency should be uncommented in case of using cryptography
             feature of P2P communicator -->
 		<dependency>
-			<groupId>bouncycastle</groupId>
-			<artifactId>bcprov-jdk15</artifactId>
-			<version>140</version>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcprov-jdk15to18</artifactId>
+			<version>1.70</version>
 			<scope>compile</scope>
 		</dependency>
 
