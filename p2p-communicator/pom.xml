@@ -97,9 +97,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.mortbay.jetty</groupId>
+			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty</artifactId>
-			<version>7.0.0.pre5</version>
+			<version>11.0.7</version>
 			<optional>true</optional>
 		</dependency>
 
