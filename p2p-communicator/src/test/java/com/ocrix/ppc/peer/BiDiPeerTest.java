@@ -14,9 +14,6 @@
 
 package com.ocrix.ppc.peer;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -26,7 +23,10 @@ import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
-
+import java.util.ArrayList;
+import java.util.UUID;
+import java.util.stream.IntStream;
+import java.util.List;
 import org.apache.log4j.Logger;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -44,6 +44,8 @@ import com.ocrix.ppc.message.MessageFactory;
 import com.ocrix.ppc.peer.BiDiPeer;
 import com.ocrix.ppc.peer.PeerFactory;
 import com.ocrix.ppc.type.Tag;
+
+import static org.junit.Assert.*;
 
 public class BiDiPeerTest implements MessageReceiver {
 	/* Class member declarations */
@@ -147,6 +149,32 @@ public class BiDiPeerTest implements MessageReceiver {
 		PPCUtils.deleteDir(new File(VerificationConstants.TARGET + "/" + ".bob"));
 		Utils.listDirectories();
 	}
+
+
+	@Test
+	public void test5PeersNetwork() {
+		int numOfPeersInNetwork = 5;
+        List<BiDiPeer> gangOfFive = new ArrayList<>(numOfPeersInNetwork);
+
+		IntStream.range(0, numOfPeersInNetwork).forEach(aPeer -> {
+			try {
+				String peerName = UUID.randomUUID().toString();
+				gangOfFive.add(peerFactory.createBiDiPeer(peerName, VerificationConstants.TARGET + "/" + "." + peerName));
+
+			} catch (IOException | PPCException e) {
+				e.printStackTrace();
+				assertFalse(true);
+			}
+		});
+
+		assertEquals(numOfPeersInNetwork, gangOfFive.size());
+
+		gangOfFive.stream().forEach(aPeerGone -> {
+			PPCUtils.deleteDir(new File(VerificationConstants.TARGET + "/" + "." + aPeerGone.getPeerName()));
+		});
+	}
+
+
 
 	@AfterClass
 	public static void tearDown() throws Exception {

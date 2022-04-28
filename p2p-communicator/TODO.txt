@@ -8,7 +8,7 @@ http://www.java.net/forum/topic/jxta/jxta-community-forum/how-initialize-pse-jxs
 Fix:
 DiscoveryPeerTest
 
-Declimer:
+Declaimer:
 There are a lot of things are changed since I've done this.
 So, currently, before bulding this package, you have to do pre-build steps:
 1. download (netty-httptunnel) from https://bitbucket.org/iainmcgin/netty-httptunnel/downloads/
